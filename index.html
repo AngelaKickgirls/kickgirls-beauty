@@ -143,59 +143,30 @@
     </section>
 
     <!-- Main Content -->
-    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main id="catalogo" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
         <!-- Barra de Búsqueda y Filtros por Marca -->
         <div class="space-y-6 mb-10">
-            <div class="flex flex-col md:flex-row gap-4 justify-between items-center">
+            <div class="flex flex-col md:flex-row gap-4 justify-between items-start md:items-center">
                 <div>
-                    <h3 class="text-2xl font-serif font-bold text-slate-900">Encuentra tus favoritos ♡</h3>
-                    <p class="text-slate-500 text-sm">Filtra por marca o busca por nombre de producto</p>
+                    <h3 class="text-xl sm:text-2xl font-serif font-bold text-slate-900">Encuentra tus favoritos ♡</h3>
+                    <p class="text-slate-500 text-xs sm:text-sm">Filtra por marca o busca por nombre de producto</p>
                 </div>
 
                 <!-- Buscador -->
                 <div class="relative w-full md:w-80">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-pinky-400"></i>
-                    <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Buscar producto..." class="w-full pl-11 pr-4 py-2.5 rounded-full border border-pink-200 bg-white focus:outline-none focus:ring-2 focus:ring-pinky-400 text-sm transition-all shadow-xs">
+                    <input type="text" id="searchInput" oninput="filterProducts()" placeholder="Buscar producto..." class="w-full pl-11 pr-4 py-2.5 rounded-full border border-pink-200 bg-white focus:outline-none focus:ring-2 focus:ring-pinky-400 text-xs sm:text-sm transition-all shadow-xs">
                 </div>
             </div>
 
-            <!-- Filtros de Categorías/Marcas -->
-            <div class="flex items-center gap-2 overflow-x-auto pb-3 custom-scroll no-scrollbar">
-                <button onclick="filterCategory('all')" id="btn-cat-all" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all shadow-xs bg-pinky-600 text-white">
-                    Todos
-                </button>
-                <button onclick="filterCategory('purpure')" id="btn-cat-purpure" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Purpure 🦋
-                </button>
-                <button onclick="filterCategory('bloomshell')" id="btn-cat-bloomshell" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Bloomshell
-                </button>
-                <button onclick="filterCategory('engol')" id="btn-cat-engol" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Engol 👼🏻
-                </button>
-                <button onclick="filterCategory('clickhair')" id="btn-cat-clickhair" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Click Hair
-                </button>
-                <button onclick="filterCategory('dolcebella')" id="btn-cat-dolcebella" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Dolce 🌹 Bella
-                </button>
-                <button onclick="filterCategory('mentahair')" id="btn-cat-mentahair" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Menta Hair
-                </button>
-                <button onclick="filterCategory('raquel')" id="btn-cat-raquel" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Raquel
-                </button>
-                <button onclick="filterCategory('milagros')" id="btn-cat-milagros" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    Milagros
-                </button>
-                <button onclick="filterCategory('myk')" id="btn-cat-myk" class="cat-btn shrink-0 px-5 py-2 rounded-full text-xs font-semibold transition-all bg-white text-slate-700 hover:bg-pink-100 border border-pink-200">
-                    MYK
-                </button>
+            <!-- Filtros por Marcas -->
+            <div class="flex items-center gap-2 overflow-x-auto pb-3 custom-scroll no-scrollbar" id="brandFilters">
+                <!-- Se generan dinámicamente -->
             </div>
         </div>
 
-        <!-- Grid de Productos (18 ítems) -->
+        <!-- Grid de Productos -->
         <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Productos cargados vía JS -->
         </div>
@@ -207,7 +178,7 @@
             </div>
             <h3 class="text-lg font-bold text-slate-800">No encontramos ningún producto</h3>
             <p class="text-slate-500 text-sm mt-1">Intenta con otra búsqueda o selecciona una marca distinta.</p>
-            <button onclick="filterCategory('all')" class="mt-4 px-5 py-2 bg-pink-100 hover:bg-pink-200 text-pinky-800 text-xs font-semibold rounded-full transition">Restablecer Filtros</button>
+            <button onclick="filterCategory('all')" class="mt-4 px-5 py-2 bg-pink-100 hover:bg-pink-200 text-pinky-800 text-xs font-semibold rounded-full transition">Ver Todos los Productos</button>
         </div>
     </main>
 
@@ -220,7 +191,7 @@
             <div class="p-5 border-b border-pink-100 flex items-center justify-between bg-pink-50/60">
                 <div class="flex items-center gap-2">
                     <i class="fa-solid fa-bag-shopping text-pinky-600 text-xl"></i>
-                    <h3 class="font-serif font-bold text-xl text-pinky-900">Tu Pedido de Maquillaje</h3>
+                    <h3 class="font-serif font-bold text-xl text-pinky-900">Tu Pedido</h3>
                 </div>
                 <button onclick="toggleCart()" class="w-9 h-9 rounded-full bg-white border border-pink-200 text-slate-500 hover:text-slate-800 flex items-center justify-center transition-colors">
                     <i class="fa-solid fa-xmark"></i>
@@ -232,7 +203,7 @@
                 <!-- Ítems dinámicos -->
             </div>
 
-            <!-- Footer Carrito / Checkout -->
+            <!-- Footer Carrito -->
             <div class="p-5 border-t border-pink-100 bg-pink-50/30 space-y-4">
                 <div class="flex justify-between items-center text-slate-700">
                     <span class="text-sm font-medium">Total Estimado:</span>
@@ -281,33 +252,162 @@
 
     <!-- Script Principal JS -->
     <script>
-        // Inventario completo de los 18 productos
+        // Inventario completo con los 87 productos solicitados
         const products = [
-            { id: 1, name: 'BLUSH “PURPURE🦋”', brand: 'PURPURE 🦋', category: 'purpure', badge: 'FAVORITO 💖', price: 21000, image: 'img/Blush.jpeg', description: 'Para darle un toque de color a las mejillas y conseguir un aspecto fresco y natural.' },
-            { id: 2, name: 'Gel de cejas “PURPURE🦋”', brand: 'PURPURE 🦋', category: 'purpure', badge: 'POPULAR ✨', price: 11000, image: 'img/Gel_de_cejas.jpeg', description: 'Ideal para peinar y dar forma a tus cejas, logrando una apariencia más arreglada y armoniosa.' },
-            { id: 3, name: 'Set lip combo “Bloomshell”', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'IMPERDIBLE 💄', price: 18000, image: 'img/Set_lip_combo.jpeg', description: 'El trío perfecto para unos labios irresistibles.' },
-            { id: 4, name: 'Polvo compacto mini “bloomshell”', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'MINI MUST-HAVE', price: 35000, image: 'img/Polvo_compacto_mini.jpeg', description: 'Ayuda a unificar la apariencia de tu rostro y conseguir un look pulido y delicado.' },
-            { id: 5, name: 'Corrector de ojeras “Engol👼🏻”', brand: 'ENGOL 👼🏻', category: 'engol', badge: 'RECOMENDADO 🌸', price: 13000, image: 'img/Corrector_ojeras.jpeg', description: 'Ideal para darle un toque más fresco e iluminado a tu mirada.' },
-            { id: 6, name: 'Gel para cejas “Engol👼🏻”', brand: 'ENGOL 👼🏻', category: 'engol', badge: 'TOP VENTAS 🔥', price: 10000, image: 'img/Gel_cejas.jpeg', description: 'Ideal para peinar, dar forma y mantener tus cejas arregladas.' },
-            { id: 7, name: 'Mascarilla de Miel “Click Hair”', brand: 'CLICK HAIR', category: 'clickhair', badge: 'CUIDADO CAPILAR', price: 50000, image: 'img/Mascarilla_miel.jpeg', description: 'Tratamiento capilar para complementar la rutina del cabello.' },
-            { id: 8, name: 'Termoprotector “Click Hair”', brand: 'CLICK HAIR', category: 'clickhair', badge: 'PROTECCIÓN 🔥', price: 49000, image: 'img/Termoprotector.jpeg', description: 'Un aliado para incorporar a la rutina del peinado, cuando se utilizan herramientas de calor.' },
-            { id: 9, name: 'Agua Micelar “Dolce🌹Bella”', brand: 'DOLCE 🌹 BELLA', category: 'dolcebella', badge: 'SKINCARE 💧', price: 19000, image: 'img/Agua_micelar.jpeg', description: 'Ideal para la limpieza y retiro de residuos de maquillaje al finalizar el día.' },
-            { id: 10, name: 'Corrector de ojeras “Dolce🌹Bella”', brand: 'DOLCE 🌹 BELLA', category: 'dolcebella', badge: 'TENDENCIA 🌟', price: 17000, image: 'img/Corrector_ojeras_D.jpeg', description: 'Ideal para ayudar a disimular las ojeras, unificar la apariencia del contorno de ojos y darle un toque más despierto a tu rostro.' },
-            { id: 11, name: 'Mantequilla para rizos 1.000ml “Menta Hair”', brand: 'MENTA HAIR', category: 'mentahair', badge: 'RIZOS PERFECTOS', price: 55000, image: 'img/Mantequilla_rizos_1.000ml.jpeg', description: 'Rizos hermosos, definidos y llenos de vida.' },
-            { id: 12, name: 'Shampoo Aclarante “Menta Hair”', brand: 'MENTA HAIR', category: 'mentahair', badge: 'BRILLO NATURAL', price: 40000, image: 'img/Shampoo_Aclarante.jpeg', description: 'Aporta brillo y luminosidad natural a tu cabello.' },
-            { id: 13, name: 'Base con filtro solar “Raquel”', brand: 'RAQUEL', category: 'raquel', badge: 'PROTECCIÓN & COBERTURA', price: 29000, image: 'img/Base_filtro_solar.jpeg', description: 'Una piel hermosa empieza con una buena base, que protege y da un acabado uniforme.' },
-            { id: 14, name: 'Aceite desmaquillante “Raquel”', brand: 'RAQUEL', category: 'raquel', badge: 'LIMPIEZA PROFUNDA', price: 28000, image: 'img/Aceite_desmaquillante.jpeg', description: 'Ideal para incluir en la rutina de limpieza al retirar el maquillaje.' },
-            { id: 15, name: 'Shampoo Arroz con ácido hialuronico “Milagros”', brand: 'MILAGROS', category: 'milagros', badge: 'HIDRATACIÓN MAX', price: 40000, image: 'img/Shampo.jpeg', description: 'Limpieza e hidratación profunda para el cuidado capilar.' },
-            { id: 16, name: 'Tratamiento emergencia capilar “Milagros”', brand: 'MILAGROS', category: 'milagros', badge: 'REPARACIÓN INTENSIVA', price: 40000, image: 'img/Tratamiento_capilar.jpeg', description: 'Restauración y nutrición intensiva para cabellos maltratados.' },
-            { id: 17, name: 'Base líquida “MYK”', brand: 'MYK', category: 'myk', badge: 'ACABADO NATURAL', price: 22000, image: 'img/Base_líquida.jpeg', description: 'Cobertura ligera y uniforme para lucir un rostro radiante.' },
-            { id: 18, name: 'Pestañina transparente “MYK”', brand: 'MYK', category: 'myk', badge: 'EFECTO NATURAL', price: 10500, image: 'img/Pestañina_transparente.jpeg', description: 'Define tus pestañas y cejas con un acabado limpio y natural.' }
+            { id: 1, name: 'ARANA TINTA', brand: 'ARANA', category: 'arana', badge: 'FAVORITO 💖', price: 19000, image: 'img/ARANA...TINTA.jpeg', description: '¡El toque de color perfecto y duradero para realzar tu belleza natural al instante!' },
+            { id: 2, name: 'ATENEA Base Líquida', brand: 'ATENEA', category: 'atenea', badge: 'PORCELANA ✨', price: 29000, image: 'img/ATENEA...Base Liquida.jpeg', description: 'Tu piel de porcelana ideal: ligera, cubriente y con un acabado divino.' },
+            { id: 3, name: 'ATENEA Corrector de ojeras', brand: 'ATENEA', category: 'atenea', badge: 'MUST HAVE 🌸', price: 37000, image: 'img/ATENEA...Corrector de ojeras.jpeg', description: 'Despídete del cansancio y luce una mirada fresca y radiante todo el día.' },
+            { id: 4, name: 'ATENEA Polvo suelto', brand: 'ATENEA', category: 'atenea', badge: 'EFECTO MATE', price: 29000, image: 'img/ATENEA...POLVO SUELTO.jpeg', description: 'El secreto para un rostro matificado, suave y con un efecto terciopelo irresistible.' },
+            { id: 5, name: 'BEAUTY Corrector en crema', brand: 'BEAUTY', category: 'beauty', badge: 'COBERTURA MÁGICA', price: 9000, image: 'img/BEAUTY...CORRECTOR EN CREMA.jpeg', description: 'Cobertura cremosa y mágica para fundirse con tu piel como segunda capa.' },
+            { id: 6, name: 'BIOAQUA Colágeno niacinamide', brand: 'BIOAQUA', category: 'bioaqua', badge: 'SKINCARE 💧', price: 13000, image: 'img/BIOAQUA...COLAGENO NIACINAMIDE.jpeg', description: 'Un baño de juventud y luminosidad para consentir tu piel con amor.' },
+            { id: 7, name: 'BLIME MAGIC SHINE DESTELLOS', brand: 'BLIME', category: 'blime', badge: 'DESTELLO MÁGICO ✨', price: 19500, image: 'img/BLIME...MAGIC SHINE DESTELLOS.jpeg', description: 'Brilla con luz propia y deslumbra con un destello mágico en cada paso.' },
+            { id: 8, name: 'Bloomshell iluminador líquido', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'GLOW CELESTIAL', price: 20000, image: 'img/Bloomshell... iluminador liquido.jpeg', description: 'El glow jugoso y celestial que tu rostro necesita para robarse todas las miradas' },
+            { id: 9, name: 'Bloomshell Tinta a base de agua', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'LOOK CHIC 💋', price: 15000, image: 'img/Bloomshell... Tinta a base de agua.jpeg', description: 'Frescura y color sutil en tus labios y mejillas para un look muy chic.' },
+            { id: 10, name: 'BLOOMSHELL BASE 2 en 1', brand: 'BLOOMSHELL', category: 'bloomshell', badge: '2 EN 1 🌟', price: 26500, image: 'img/BLOOMSHELL...BASE 2 en 1.jpeg', description: 'Practicidad y perfección en un solo paso para una piel de impacto.' },
+            { id: 11, name: 'BLOOMSHELL BLOOM ULTRA SHINE', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'ULTRA SHINE', price: 15000, image: 'img/BLOOMSHELL...BLOOM ULTRA SHINE.jpeg', description: 'Labios jugosos con un brillo espejo ultra glamoroso y seductor.' },
+            { id: 12, name: 'Bloomshell Bloom Mocha', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'TONOS CÁLIDOS', price: 25000, image: 'img/Bloomshell...Bloom Mocha.jpeg', description: 'Tonos cálidos y sofisticados que abrazan tu rostro con elegancia.' },
+            { id: 13, name: 'Bloomshell BLOOM SUBLIME XL', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'EDICIÓN XL', price: 19000, image: 'img/Bloomshell...BLOOM SUBLIME XL.jpeg', description: 'Tu dosis extra de glamour y belleza para destacar en grande.' },
+            { id: 14, name: 'BLOOMSHELL CORRECTOR 20ml', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'FORMATO 20ML', price: 27000, image: 'img/BLOOMSHELL...CORRECTOR 20ml.jpeg', description: 'Corrección impecable en un formato generoso para que nunca te falte.' },
+            { id: 15, name: 'Bloomshell Crema Facial', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'HIDRATACIÓN 🌺', price: 49000, image: 'img/Bloomshell...Crema Facial.jpeg', description: 'Hidratación profunda y mimos deliciosos para una caricia en tu piel.' },
+            { id: 16, name: 'Bloomshell Iluminador Cosmic', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'COSMIC GLOW', price: 29000, image: 'img/Bloomshell...Iluminador Cosmic.jpeg', description: 'Un brillo de otra galaxia para iluminar tus facciones con magia pura.' },
+            { id: 17, name: 'Bloomshell Jabón Facial en Gel', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'LIMPIEZA FRESCA', price: 35000, image: 'img/Bloomshell...Jabón Facial en Gel.jpeg', description: 'Limpieza refrescante que deja tu carita lista, limpia y renovada.' },
+            { id: 18, name: 'Bloomshell Jelly Glow', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'JELLY GLOW', price: 17500, image: 'img/Bloomshell...Jelly Glow.jpeg', description: 'Textura jelly y acabado glowy para una piel jugosa y llena de vida.' },
+            { id: 19, name: 'Bloomshell Laminador de cejas XL', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'CEJAS PRO', price: 23000, image: 'img/Bloomshell...Laminador de cejas XL.jpeg', description: 'Cejas perfectas, definidas y fijas por más tiempo con estilo pro.' },
+            { id: 20, name: 'BLOOMSHELL LIP BALM BARRA', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'LIP BALM', price: 14000, image: 'img/BLOOMSHELL...LIP BALM BARRA.jpeg', description: 'Hidratación y color tierno en una barra lista para tu bolso.' },
+            { id: 21, name: 'BLOOMSHELL LIP BALM CORAZÓN', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'DULCE DETALLE ♡', price: 11000, image: 'img/BLOOMSHELL...LIP BALM CORAZÓN.jpeg', description: 'Un detalle de amor para tus labios con la suavidad más dulce.' },
+            { id: 22, name: 'Bloomshell lip Oil Ultra Hidratante', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'ULTRA HIDRATANTE', price: 17000, image: 'img/Bloomshell...lip Oil Ultra Hidratante.jpeg', description: 'Aceite nutritivo que viste tus labios con un brillo espejo ultra seductor.' },
+            { id: 23, name: 'BLOOMSHELL MINI FIJADOR', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'FIJADOR CÓMPLICE', price: 27000, image: 'img/BLOOMSHELL...MINI FIJADOR.jpeg', description: 'Tu cómplice secreto para que tu maquillaje luzca intacto por horas y horas.' },
+            { id: 24, name: 'BLOOMSHELL PALETA DE LABIOS', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'PALETA MULTICOLOR', price: 19000, image: 'img/BLOOMSHELL...PALETA DE LABIOS.jpeg', description: 'Un abanico de tonos irresistibles para crear mil looks en tus labios.' },
+            { id: 25, name: 'BLOOMSHELL PESTAÑINA NEGRA', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'PESTAÑAS INFINITAS', price: 26000, image: 'img/BLOOMSHELL...PESTAÑINA NEGRA.jpeg', description: 'Pestañas infinitas, dramáticas y de impacto para una mirada seductora.' },
+            { id: 26, name: 'Bloomshell Repair Mist', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'ROCÍO REPARADOR', price: 47000, image: 'img/Bloomshell...Repair Mist.jpeg', description: 'Rocío reparador que revitaliza tu rostro y devuelve la calma a tu piel.' },
+            { id: 27, name: 'Bloomshell Serum de labios', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'SERUM NUTRITIVO', price: 13500, image: 'img/Bloomshell...Serum de labios.jpeg', description: 'Nutrición profunda para unos labios carnosos, suaves y besables.' },
+            { id: 28, name: 'Bloomshell Lip Gloss', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'GLOSS CLÁSICO', price: 13500, image: 'img/Bloomshell...Lip Gloss.jpeg', description: 'El brillo clásico y chic que nunca pasa de moda en tu cosmetiquera.' },
+            { id: 29, name: 'Bloomshell Papel Anti-Grasa', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'EFECTO MATE Instantáneo', price: 20000, image: 'img/Bloomshell...Papel Anti-Grasa.jpeg', description: 'Adiós al brillo indeseado en segundos; tu piel siempre será mate y perfecta.' },
+            { id: 30, name: 'Bloomshell Primer', brand: 'BLOOMSHELL', category: 'bloomshell', badge: 'PREPARADOR POROS', price: 19000, image: 'img/Bloomshell...Primer.jpeg', description: 'El lienzo perfecto: suaviza los poros y prepara tu piel para un maquillaje divino.' },
+            { 
+                id: 31, 
+                name: 'Care Style Exfoliante', 
+                brand: 'CARE STYLE', 
+                category: 'carestyle', 
+                badge: 'SPA EN CASA 🌿', 
+                price: 8000, 
+                image: 'img/Care Style... Exfoliante 3 Tamaños y 3 fragancias.jpeg', 
+                description: 'Una experiencia de spa en casa para una piel suave como la seda.',
+                hasVariants: true,
+                variants: [
+                    { size: '250ml', price: 8000 },
+                    { size: '630ml', price: 13000 },
+                    { size: '1000ml', price: 16000 }
+                ]
+            },
+            { id: 32, name: 'DAY PALETA DE SOMBRAS', brand: 'DAY', category: 'day', badge: 'VIBRANTES SOMBRAS', price: 21000, image: 'img/DAY...PALETA DE SOMBRAS.jpeg', description: 'Colores vibrantes y versátiles para soñar y crear looks espectaculares.' },
+            { id: 33, name: 'DAY RUBOR EN GELATINA', brand: 'DAY', category: 'day', badge: 'RUBOR GELATINA', price: 10500, image: 'img/DAY...RUBOR EN GELATINA.jpeg', description: 'Un rubor jugoso que deja un rubor natural y saludable en tus mejillas.' },
+            { id: 34, name: 'DOLCE BELLA CONTORNO EN BARRA', brand: 'DOLCE BELLA', category: 'dolcebella', badge: 'CONTORNO FÁCIL', price: 20000, image: 'img/DOLCE BELLA...CONTORNO EN BARRA.jpeg', description: 'Define y esculpe tus facciones como toda una experta en segundos.' },
+            { id: 35, name: 'DOLCE BELLA CREMA FACIAL CON FILTRO SOLAR', brand: 'DOLCE BELLA', category: 'dolcebella', badge: 'PROTECCIÓN SOLAR ☀️', price: 18000, image: 'img/DOLCE BELLA...CREMA FACIAL CON FILTRO SOLAR.jpeg', description: 'Cuida tu carita del sol mientras la mantienes hidratada y divina.' },
+            { id: 36, name: 'DOLCE BELLA FIJADOR DE MAQUILLAJE', brand: 'DOLCE BELLA', category: 'dolcebella', badge: 'LARGA DURACIÓN', price: 23000, image: 'img/DOLCE BELLA...FIJADOR DE MAQUILLAJE.jpeg', description: 'Sella tu arte y haz que tu maquillaje perdure toda la noche.' },
+            { id: 37, name: 'GIRLY Polvo Suelto', brand: 'GIRLY', category: 'girly', badge: 'ACABADO ANGELICAL', price: 35000, image: 'img/GIRLY...Polvo Suelto.jpeg', description: 'Polvo ultra fino para un acabado angelical y sin poros visibles.' },
+            { id: 38, name: 'GORRO SATÍN', brand: 'ACCESORIOS', category: 'accesorios', badge: 'ANTI FRIZZ 👑', price: 8000, image: 'img/GORRO SANTIN.jpeg', description: 'Duerme como una reina y cuida tu cabello del frizz con elegancia.' },
+            { id: 39, name: 'KARITE CORRECTOR DE OJERAS', brand: 'KARITE', category: 'karite', badge: 'DESCANSO INSTANTÁNEO', price: 8000, image: 'img/KARITE...CORRECTOR DE OJERAS.jpeg', description: 'Oculta imperfecciones al instante y regálate una mirada descansada.' },
+            { id: 40, name: 'KARITE ROLLO PAPEL MATIFICANTE (con repuesto)', brand: 'KARITE', category: 'karite', badge: 'MATIFICANTE PRÁCTICO', price: 12000, image: 'img/KARITE...ROLLO DE PAPEL MATIFICANTE (con repuesto).jpeg', description: 'Práctico y chic para retocar tu rostro impecable donde vayas.' },
+            { id: 41, name: 'Karseell Mascarilla', brand: 'KARSEELL', category: 'karseell', badge: 'RESCATE CAPILAR', price: 70000, image: 'img/Karseell.. Mascarilla.jpeg', description: 'Rescate capilar profundo para una melena sedosa, brillante y de ensueño.' },
+            { id: 42, name: 'Kiss Beauty POLVO SUELTO', brand: 'KISS BEAUTY', category: 'kissbeauty', badge: 'SELLADO PRO', price: 13000, image: 'img/Kiss Beauty...POLVO SUELTO.jpeg', description: 'Sella tu base con un toque sutil, ligero y de acabado profesional.' },
+            { id: 43, name: 'LECHE PAL PELO MASCARILLA RIZOS Y ONDAS', brand: 'LECHE PAL PELO', category: 'lechepalpelo', badge: 'RIZOS DEFINIDOS', price: 37000, image: 'img/LECHE PAL PELO...MASCARILLA RIZOS Y ONDAS.jpeg', description: 'Rizos definidos, hidratados y llenos de vida y movimiento.' },
+            { id: 44, name: 'LECHE PAL PELO SHAMPOO MASCARILLA', brand: 'LECHE PAL PELO', category: 'lechepalpelo', badge: 'NUTRICIÓN INTENSA', price: 72000, image: 'img/LECHE PAL PELO...SHAMPOO MASCARILLA.jpeg', description: 'Nutrición y limpieza profunda para un cabello súper saludable.' },
+            { id: 45, name: 'LECHE PAL PELO SHAMPOO RIZOS Y ONDAS', brand: 'LECHE PAL PELO', category: 'lechepalpelo', badge: 'CUIDADO ONDAS', price: 37000, image: 'img/LECHE PAL PELO...SHAMPOO RIZOS Y ONDAS.jpeg', description: 'Limpia suavemente mientras mima y cuida tus ondas naturales.' },
+            { id: 46, name: 'LECHE PAL PELO SPRAY DESENREDANTE KIDS', brand: 'LECHE PAL PELO', category: 'lechepalpelo', badge: 'KIDS SIN LÁGRIMAS', price: 26000, image: 'img/LECHE PAL PELO...SPRAY DESENREDANTE KIDS.jpeg', description: 'Desenredar el cabello de los pequeños ahora es fácil, mágico y sin lágrimas.' },
+            { id: 47, name: 'LECHE PAL PELO TERMO PROTECTOR LÍQUIDO', brand: 'LECHE PAL PELO', category: 'lechepalpelo', badge: 'PROTECTOR TÉRMICO', price: 26000, image: 'img/LECHE PAL PELO...TERMO PROTECTOR LÍQUIDO.jpeg', description: 'Escudo protector contra el calor para cuidar tu melena con estilo.' },
+            { id: 48, name: 'MELU TINTA DE LABIOS', brand: 'MELU', category: 'melu', badge: 'RUBOR NATURAL', price: 17000, image: 'img/MELU...TINTA DE LABIOS.jpeg', description: 'Color natural y duradero que parece un rubor propio de tus labios.' },
+            { id: 49, name: 'MENTA HAIR COMBO X 3', brand: 'MENTA HAIR', category: 'mentahair', badge: 'TRÍO MILAGROSO 💫', price: 110000, image: 'img/MENTA HAIR...COMBO X 3.jpeg', description: 'El trío milagroso para transformar tu cabello en una cascada de brillo.' },
+            { id: 50, name: 'MiisCosmetics Base líquida', brand: 'MIISCOSMETICS', category: 'miiscosmetics', badge: 'COBERTURA LIGERA', price: 27000, image: 'img/MiisCosmetics...Base liquida.jpeg', description: 'Cobertura ligera y natural que se funde divinamente con tu piel.' },
+            { id: 51, name: 'MiisCosmetics Corrector de ojeras', brand: 'MIISCOSMETICS', category: 'miiscosmetics', badge: 'INFALIBLE', price: 14500, image: 'img/MiisCosmetics...Corrector de ojeras.jpeg', description: 'Tu aliado infalible para borrar ojeras y aportar luz a tu rostro.' },
+            { id: 52, name: 'MiisCosmetics Delineador', brand: 'MIISCOSMETICS', category: 'miiscosmetics', badge: 'TRAZO FELINO 🐱', price: 21500, image: 'img/MiisCosmetics...Delineador.jpeg', description: 'Define tu mirada con precisión para un trazo felino y seductor.' },
+            { id: 53, name: 'MiisCosmetics Mini Paleta de sombras', brand: 'MIISCOSMETICS', category: 'miiscosmetics', badge: 'MINI PALETA', price: 18000, image: 'img/MiisCosmetics...Mini Paleta de sombras.jpeg', description: 'Compacta y hermosa, perfecta para llevar el color ideal en tu bolso.' },
+            { id: 54, name: 'RAQUEL Polvo Compacto', brand: 'RAQUEL', category: 'raquel', badge: 'CLÁSICO ELEGANTE', price: 17000, image: 'img/RAQUEL...Polvo Compacto.jpeg', description: 'Retoca con elegancia y mantén tu rostro perfecto durante el día.' },
+            { id: 55, name: 'MiisCosmetics PreBase Acabado luminoso', brand: 'MIISCOSMETICS', category: 'miiscosmetics', badge: 'PREBASE RADIANTE', price: 30500, image: 'img/MiisCosmetics...PreBase Acabado luminoso.jpeg', description: 'Prepara tu piel aportando un brillo saludable y radiante desde adentro.' },
+            { id: 56, name: 'Milagros Acondicionador Miracle repair', brand: 'MILAGROS', category: 'milagros', badge: 'MIRACLE REPAIR', price: 67000, image: 'img/Milagros...Acondicionador Miracle repair.jpeg', description: 'Suavidad extrema y reparación profunda para un cabello de revista.' },
+            { id: 57, name: 'Milagros Shampoo Miracle repair', brand: 'MILAGROS', category: 'milagros', badge: 'REVIVE MELENA', price: 67000, image: 'img/Milagros...Shampoo Miracle repair.jpeg', description: 'Revive tu melena maltratada devolviéndote fuerza y brillo natural.' },
+            { id: 58, name: 'MINISTAR RUBOR COMPACTO', brand: 'MINISTAR', category: 'ministar', badge: 'TOQUE ROMÁNTICO', price: 10500, image: 'img/MINISTAR...RUBOR COMPACTO.jpeg', description: 'Un toque de color romántico y saludable en tus mejillas.' },
+            { id: 59, name: 'MOCMALLURE GEL DE CEJAS', brand: 'MOCMALLURE', category: 'mocmallure', badge: 'CEJAS INTACTAS', price: 7000, image: 'img/MOCMALLURE...GEL DE CEJAS.jpeg', description: 'Fija, peina y levanta tus cejas para un look impecable todo el día.' },
+            { id: 60, name: 'MYK Ruleta de esponjas', brand: 'MYK', category: 'myk', badge: 'DIFUMINADO DIVINO', price: 4500, image: 'img/MYK...Ruleta de esponjas.jpeg', description: 'Esponjitas suaves y coloridas para difuminar tu maquillaje como una diosa.' },
+            { id: 61, name: 'ONE STEP Cepillo Secador', brand: 'ACCESORIOS', category: 'accesorios', badge: 'BLOWOUT DE SALÓN', price: 42000, image: 'img/ONE STEP...Cepillo Secador.jpeg', description: 'Seca y moldea tu cabello al mismo tiempo para un blowout de salón.' },
+            { id: 62, name: 'ORIGEN BOTANICO MASCARILLA SOS', brand: 'ORIGEN BOTÁNICO', category: 'origenbotanico', badge: 'RESCATE BOTÁNICO', price: 37000, image: 'img/ORIGEN BOTANICO...MASCARILLA SOS (2).jpeg', description: 'Tratamiento de rescate intensivo para revitalizar tu cabello al instante.' },
+            { id: 63, name: 'ORIGEN BOTÁNICO SHAMPOO', brand: 'ORIGEN BOTÁNICO', category: 'origenbotanico', badge: 'LIMPIEZA BOTÁNICA', price: 36000, image: 'img/ORIGEN BOTANICO...SHAMPOO.jpeg', description: 'Limpieza botánica que purifica y cuida tu melena con amor natural.' },
+            { id: 64, name: 'ORIGEN BOTÁNICO TRATAMIENTO INTENSIVO', brand: 'ORIGEN BOTÁNICO', category: 'origenbotanico', badge: 'NUTRICIÓN NATURAL', price: 34500, image: 'img/ORIGEN BOTANICO...TRATAMIENTO INTENSIVO.jpeg', description: 'Nutrición profunda de origen natural para un cabello deslumbrante.' },
+            { id: 65, name: 'Peel Off LIP TATOO + LIP OIL', brand: 'PEEL OFF', category: 'peeloff', badge: 'LIP TATOO 💋', price: 8000, image: 'img/Peel Off...LIP TATOO+LIP OIL.jpeg', description: 'Color semipermanente y brillo jugoso para unos labios perfectos.' },
+            { id: 66, name: 'PIEDRA GUA SHA', brand: 'ACCESORIOS', category: 'accesorios', badge: 'RITUAL FACIAL 🧘‍♀️', price: 10000, image: 'img/PIEDRA GUA SHA.jpeg', description: 'Tu ritual de belleza facial favorito para drenar, tonificar y relajar tu piel.' },
+            { id: 67, name: 'Piluss Pestañas', brand: 'PILUSS', category: 'piluss', badge: 'MIRADA DREAM', price: 7500, image: 'img/piluss...Pestañas.jpeg', description: 'Pestañas postizas de ensueño para abrir tu mirada con máximo glamour.' },
+            { id: 68, name: 'PROSA MAXI-VOLUMEN BORGOÑA', brand: 'PROSA', category: 'prosa', badge: 'EDICIÓN BORGOÑA', price: 17000, image: 'img/PROSA...MAXI-VOLUMEN BORGOÑA.jpeg', description: 'Pestañas voluminosas con un toque de color único y sofisticado.' },
+            { id: 69, name: 'PURPURE Kit Purpure M', brand: 'PURPURE 🦋', category: 'purpure', badge: 'SET ENCANTADOR', price: 52000, image: 'img/PURPURE... Kit Purpure M.jpeg', description: 'Un set completo y encantador para consentirte de pies a cabeza.' },
+            { id: 70, name: 'PURPURE Mini Mantequilla', brand: 'PURPURE 🦋', category: 'purpure', badge: 'MANTEQUILLA SUAVE', price: 13000, image: 'img/PURPURE... Mini Mantequilla.jpeg', description: 'Hidratación mantecosa y deliciosa para consentir tu piel con dulzura.' },
+            { id: 71, name: 'PURPURE Mini Splash', brand: 'PURPURE 🦋', category: 'purpure', badge: 'FRESCURA POCKET', price: 16000, image: 'img/PURPURE... Mini Splash.jpeg', description: 'Una explosión de frescura y aroma irresistible para llevar a todas partes.' },
+            { id: 72, name: 'PURPURE SPLASH CORPORAL 100ml', brand: 'PURPURE 🦋', category: 'purpure', badge: 'SPLASH 100ML', price: 17000, image: 'img/PURPURE... SPLASH CORPORAL 100ml.jpeg', description: 'Perfuma tu piel con notas femeninas que dejan huella a tu paso.' },
+            { id: 73, name: 'PURPURE Tónico Facial', brand: 'PURPURE 🦋', category: 'purpure', badge: 'EQUILIBRIO FACIAL', price: 16000, image: 'img/PURPURE... Tonico Facial.jpeg', description: 'Refresca, equilibra y prepara tu piel con un toque de frescura pura.' },
+            { id: 74, name: 'PURPURE Aceite Corporal 150ml', brand: 'PURPURE 🦋', category: 'purpure', badge: 'ACEITE SEDOSO', price: 25000, image: 'img/PURPURE...Aceite Corporal 150ml.jpeg', description: 'Hidratación profunda y sedosa para una piel suave y luminosa.' },
+            { id: 75, name: 'PURPURE Body Splash 140ml', brand: 'PURPURE 🦋', category: 'purpure', badge: 'BODY SPLASH 140ML', price: 15000, image: 'img/PURPURE...Body Splash 140ml.jpeg', description: 'Fragancia envolvente y femenina que te acompaña todo el día.' },
+            { id: 76, name: 'PURPURE BROCHA PROFESSIONAL BRUSH', brand: 'PURPURE 🦋', category: 'purpure', badge: 'BROCHA PRO', price: 20000, image: 'img/PURPURE...BROCHA PROFESSIONAL BRUSH.jpeg', description: 'Herramienta pro para difuminar tu maquillaje con total suavidad.' },
+            { id: 77, name: 'PURPURE Glitter Spray', brand: 'PURPURE 🦋', category: 'purpure', badge: 'GLITTER SPRAY ✨', price: 11000, image: 'img/PURPURE...Glitter Spray.jpeg', description: 'Brillo en spray para deslumbrar con destellos mágicos en tu piel y cabello.' },
+            { id: 78, name: 'PURPURE Jabón de Azufre', brand: 'PURPURE 🦋', category: 'purpure', badge: 'PIEL MATE & PURA', price: 12000, image: 'img/PURPURE...Jabón de Azufre.jpeg', description: 'Limpieza profunda ideal para cuidar y purificar las pieles con tendencia grasa.' },
+            { id: 79, name: 'PURPURE Kit Purpure', brand: 'PURPURE 🦋', category: 'purpure', badge: 'REGALO PERFECTO 🎁', price: 47000, image: 'img/PURPURE...Kit Purpure.jpeg', description: 'El regalo perfecto de bienestar y belleza para consentirte como mereces.' },
+            { id: 80, name: 'PURPURE SPLASH', brand: 'PURPURE 🦋', category: 'purpure', badge: 'AROMA SEDUCTOR', price: 21000, image: 'img/PURPURE...SPLASH.jpeg', description: 'Aroma fresco y seductor para refrescar tu esencia en cualquier momento.' },
+            { id: 81, name: 'PURPURE Brocha ideal para rubor', brand: 'PURPURE 🦋', category: 'purpure', badge: 'EFECTO SONROSADO', price: 20000, image: 'img/PURPURE..Brocha ideal para rubor.jpeg', description: 'Difumina tu rubor con precisión para un efecto sonrosado divino.' },
+            { id: 82, name: 'PURPURE Lapiz delineador de labios', brand: 'PURPURE 🦋', category: 'purpure', badge: 'DELINEADOR LABIOS', price: 7000, image: 'img/PURPURE..Lapiz delineador de labios.jpeg', description: 'Define y da volumen a tus labios con un trazo suave y preciso.' },
+            { id: 83, name: 'Raquel Corrector de ojeras', brand: 'RAQUEL', category: 'raquel', badge: 'CLÁSICO INFALIBLE', price: 18500, image: 'img/raquel...Corrector de ojeras.jpeg', description: 'El clásico infaltable para una cobertura práctica y natural.' },
+            { id: 84, name: 'RIMOCOO LIP BALM', brand: 'RIMOCOO', category: 'rimocoo', badge: 'LABIOS SUAVES', price: 6500, image: 'img/RIMOCOO...LIP BALM.jpeg', description: 'Hidratación tierna y sutil para mantener tus labios suaves y cuidados.' },
+            { id: 85, name: 'RIMOCOO RUBOR LÍQUIDO', brand: 'RIMOCOO', category: 'rimocoo', badge: 'BUENA CARA ✨', price: 5500, image: 'img/RIMOCOO...RUBOR LÍQUIDO.jpeg', description: 'Efecto "buena cara" instantáneo con un acabado fresco y muy natural.' },
+            { id: 86, name: 'Set de Brochas x6', brand: 'ACCESORIOS', category: 'accesorios', badge: 'SET ESSENTIAL', price: 9500, image: 'img/Set de Brochas x6.jpeg', description: 'Tu set esencial de pinceles para crear cualquier look de maquillaje con estilo.' },
+            { id: 87, name: 'Trendy Lip Gloss', brand: 'TRENDY', category: 'trendy', badge: 'ULTRA TRENDY', price: 8000, image: 'img/Trendy...Lip Gloss.jpeg', description: 'Brillo labial ultra trendy que aporta volumen y un toque chic a tus labios.' }
+        ];
+
+        // Lista de filtros de marcas
+        const brands = [
+            { id: 'all', label: 'Todas las Marcas' },
+            { id: 'arana', label: 'Arana' },
+            { id: 'atenea', label: 'Atenea' },
+            { id: 'beauty', label: 'Beauty' },
+            { id: 'bioaqua', label: 'Bioaqua' },
+            { id: 'blime', label: 'Blime' },
+            { id: 'bloomshell', label: 'Bloomshell' },
+            { id: 'carestyle', label: 'Care Style' },
+            { id: 'day', label: 'Day' },
+            { id: 'dolcebella', label: 'Dolce Bella 🌹' },
+            { id: 'girly', label: 'Girly' },
+            { id: 'karite', label: 'Karite' },
+            { id: 'karseell', label: 'Karseell' },
+            { id: 'kissbeauty', label: 'Kiss Beauty' },
+            { id: 'lechepalpelo', label: 'Leche Pal Pelo' },
+            { id: 'melu', label: 'Melu' },
+            { id: 'mentahair', label: 'Menta Hair' },
+            { id: 'miiscosmetics', label: 'MiisCosmetics' },
+            { id: 'milagros', label: 'Milagros' },
+            { id: 'ministar', label: 'Ministar' },
+            { id: 'mocmallure', label: 'Mocmallure' },
+            { id: 'myk', label: 'MYK' },
+            { id: 'origenbotanico', label: 'Origen Botánico' },
+            { id: 'peeloff', label: 'Peel Off' },
+            { id: 'piluss', label: 'Piluss' },
+            { id: 'prosa', label: 'Prosa' },
+            { id: 'purpure', label: 'Purpure 🦋' },
+            { id: 'raquel', label: 'Raquel' },
+            { id: 'rimocoo', label: 'Rimocoo' },
+            { id: 'trendy', label: 'Trendy' },
+            { id: 'accesorios', label: 'Accesorios' }
         ];
 
         let cart = [];
         let currentCategory = 'all';
+        let selectedVariantPrice = {};
 
         function formatPrice(val) {
             return '$' + val.toLocaleString('es-CO');
+        }
+
+        function renderBrandFilters() {
+            const container = document.getElementById('brandFilters');
+            container.innerHTML = brands.map(b => `
+                <button onclick="filterCategory('${b.id}')" id="btn-cat-${b.id}" class="cat-btn shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all ${b.id === 'all' ? 'bg-pinky-600 text-white shadow-xs' : 'bg-white text-slate-700 hover:bg-pink-100 border border-pink-200'}">
+                    ${b.label}
+                </button>
+            `).join('');
         }
 
         function renderProducts(items) {
@@ -321,56 +421,51 @@
             }
 
             emptyState.classList.add('hidden');
-            grid.innerHTML = items.map(product => `
+            grid.innerHTML = items.map(product => {
+                const displayPrice = product.hasVariants ? product.variants[0].price : product.price;
+                return `
                 <div class="bg-white rounded-[2rem] border border-pink-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col overflow-hidden group">
                     <div class="relative overflow-hidden bg-pink-50/50 aspect-square cursor-pointer" onclick="openModal(${product.id})">
-                        <!-- Badge Top Izquierda (FAVORITO, POPULAR, etc.) -->
                         <span class="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold text-pinky-700 shadow-xs border border-pink-100 uppercase tracking-wider">
                             ${product.badge}
                         </span>
 
-                        <!-- Imagen con Efecto Hover Zoom -->
                         <img src="${product.image}" 
                              alt="${product.name}" 
                              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80';"
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
 
-                        <!-- Badge Flotante de Precio (Esquina Inferior Derecha) -->
                         <div class="absolute bottom-3 right-3 z-10 bg-pinky-800/85 backdrop-blur-md text-white font-extrabold text-xs px-3.5 py-1.5 rounded-xl shadow-md border border-white/20">
-                            ${formatPrice(product.price)}
+                            ${product.hasVariants ? 'Desde ' : ''}${formatPrice(displayPrice)}
                         </div>
                     </div>
 
                     <div class="p-5 flex flex-col flex-grow">
-                        <!-- Etiqueta de Marca -->
                         <span class="text-[10px] font-bold uppercase tracking-wider text-pinky-600 mb-1 block">
                             ${product.brand}
                         </span>
 
-                        <!-- Nombre del Producto -->
                         <h3 class="font-serif font-bold text-slate-800 text-base mb-1.5 leading-snug hover:text-pinky-600 transition-colors cursor-pointer" onclick="openModal(${product.id})">
                             ${product.name}
                         </h3>
 
-                        <!-- Descripción -->
                         <p class="text-slate-500 text-xs line-clamp-2 mb-4 font-light leading-relaxed">
                             ${product.description}
                         </p>
 
-                        <!-- Pie de Tarjeta: "Ver Detalle" a la izquierda y "+ Agregar" a la derecha -->
                         <div class="mt-auto pt-3 border-t border-pink-100 flex items-center justify-between">
                             <button onclick="openModal(${product.id})" class="text-xs font-bold text-pinky-600 hover:text-pinky-800 transition-colors flex items-center gap-1 group/btn">
                                 Ver Detalle
                                 <i class="fa-solid fa-chevron-right text-[9px] group-hover/btn:translate-x-0.5 transition-transform"></i>
                             </button>
 
-                            <button onclick="addToCart(${product.id})" class="bg-gradient-to-r from-pinky-600 to-pinky-700 hover:from-pinky-700 hover:to-pinky-800 text-white font-bold px-4 py-2 rounded-full text-xs transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 active:scale-95">
+                            <button onclick="addToCart(${product.id})" class="bg-gradient-to-r from-pinky-600 to-pinky-700 hover:from-pinky-700 hover:to-pinky-800 text-white font-bold px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs transition-all shadow-md hover:shadow-lg flex items-center gap-1.5 active:scale-95">
                                 <i class="fa-solid fa-plus text-[10px]"></i> Agregar
                             </button>
                         </div>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function filterCategory(cat) {
@@ -393,32 +488,42 @@
             const query = document.getElementById('searchInput').value.toLowerCase();
             const filtered = products.filter(p => {
                 const matchesCat = (currentCategory === 'all') || (p.category === currentCategory);
-                const matchesSearch = p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query);
+                const matchesSearch = p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query) || p.brand.toLowerCase().includes(query);
                 return matchesCat && matchesSearch;
             });
             renderProducts(filtered);
         }
 
-        function addToCart(productId) {
+        function addToCart(productId, selectedSize = null, customPrice = null) {
             const product = products.find(p => p.id === productId);
-            const existing = cart.find(item => item.id === productId);
+            let finalName = product.name;
+            let finalPrice = product.price;
+
+            if (product.hasVariants) {
+                const variant = selectedSize ? product.variants.find(v => v.size === selectedSize) : product.variants[0];
+                finalName = `${product.name} (${variant.size})`;
+                finalPrice = variant.price;
+            }
+
+            const itemKey = `${productId}-${finalName}`;
+            const existing = cart.find(item => item.key === itemKey);
 
             if (existing) {
                 existing.quantity++;
             } else {
-                cart.push({ ...product, quantity: 1 });
+                cart.push({ key: itemKey, id: productId, name: finalName, price: finalPrice, image: product.image, quantity: 1 });
             }
 
             updateCartUI();
             toggleCart(true);
         }
 
-        function updateQuantity(productId, delta) {
-            const item = cart.find(i => i.id === productId);
+        function updateQuantity(itemKey, delta) {
+            const item = cart.find(i => i.key === itemKey);
             if (item) {
                 item.quantity += delta;
                 if (item.quantity <= 0) {
-                    cart = cart.filter(i => i.id !== productId);
+                    cart = cart.filter(i => i.key !== itemKey);
                 }
             }
             updateCartUI();
@@ -453,9 +558,9 @@
                         <h4 class="font-semibold text-pinky-900 text-xs leading-tight truncate">${item.name}</h4>
                         <span class="text-xs text-slate-500 font-medium">${formatPrice(item.price)} c/u</span>
                         <div class="flex items-center gap-2 mt-2">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="w-5 h-5 rounded-full bg-white border border-pink-200 hover:bg-pink-100 text-slate-600 flex items-center justify-center text-xs font-bold transition-colors">-</button>
+                            <button onclick="updateQuantity('${item.key}', -1)" class="w-5 h-5 rounded-full bg-white border border-pink-200 hover:bg-pink-100 text-slate-600 flex items-center justify-center text-xs font-bold transition-colors">-</button>
                             <span class="text-xs font-bold text-pinky-900 w-4 text-center">${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)" class="w-5 h-5 rounded-full bg-white border border-pink-200 hover:bg-pink-100 text-slate-600 flex items-center justify-center text-xs font-bold transition-colors">+</button>
+                            <button onclick="updateQuantity('${item.key}', 1)" class="w-5 h-5 rounded-full bg-white border border-pink-200 hover:bg-pink-100 text-slate-600 flex items-center justify-center text-xs font-bold transition-colors">+</button>
                         </div>
                     </div>
                     <div class="text-right flex-shrink-0">
@@ -484,6 +589,23 @@
             const product = products.find(p => p.id === productId);
             const content = document.getElementById('modalContent');
 
+            let variantSelectorHTML = '';
+            if (product.hasVariants) {
+                variantSelectorHTML = `
+                    <div class="mb-4">
+                        <label class="block text-xs font-bold text-slate-700 mb-2">Selecciona Presentación / Tamaño:</label>
+                        <div class="flex gap-2">
+                            ${product.variants.map((v, idx) => `
+                                <button onclick="selectVariant(${product.id}, '${v.size}', ${v.price}, this)" class="variant-btn border px-3 py-1.5 rounded-xl text-xs font-semibold ${idx === 0 ? 'bg-pinky-600 text-white border-pinky-600' : 'bg-white text-slate-700 border-pink-200'}">
+                                    ${v.size} (${formatPrice(v.price)})
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                selectedVariantPrice[product.id] = { size: product.variants[0].size, price: product.variants[0].price };
+            }
+
             content.innerHTML = `
                 <div class="bg-pink-50 aspect-video overflow-hidden relative">
                     <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80';">
@@ -491,13 +613,16 @@
                 <div class="p-6">
                     <span class="text-[10px] font-bold uppercase tracking-wider text-pinky-600 bg-pink-100 px-2.5 py-1 rounded-full inline-block mb-2">${product.brand}</span>
                     <h3 class="text-xl font-serif font-bold text-pinky-900 mb-2 leading-snug">${product.name}</h3>
-                    <p class="text-slate-600 text-xs mb-6 leading-relaxed font-light">${product.description}</p>
+                    <p class="text-slate-600 text-xs mb-4 leading-relaxed font-light">${product.description}</p>
+                    
+                    ${variantSelectorHTML}
+
                     <div class="flex items-center justify-between pt-4 border-t border-pink-100">
                         <div>
                             <span class="text-[10px] text-slate-400 block uppercase font-semibold">Precio</span>
-                            <span class="text-xl font-extrabold text-pinky-900">${formatPrice(product.price)}</span>
+                            <span id="modalPriceDisplay" class="text-xl font-extrabold text-pinky-900">${formatPrice(product.hasVariants ? product.variants[0].price : product.price)}</span>
                         </div>
-                        <button onclick="addToCart(${product.id}); closeModal();" class="bg-pinky-600 hover:bg-pinky-700 text-white font-semibold px-5 py-2.5 rounded-full transition-all shadow-md flex items-center gap-2 text-xs">
+                        <button onclick="addFromModal(${product.id})" class="bg-pinky-600 hover:bg-pinky-700 text-white font-semibold px-5 py-2.5 rounded-full transition-all shadow-md flex items-center gap-2 text-xs">
                             <i class="fa-solid fa-cart-plus"></i> Agregar al Pedido
                         </button>
                     </div>
@@ -508,6 +633,27 @@
             modal.classList.remove('opacity-0', 'pointer-events-none');
             modal.querySelector('div:nth-child(2)').classList.remove('scale-95');
             modal.querySelector('div:nth-child(2)').classList.add('scale-100');
+        }
+
+        function selectVariant(productId, size, price, btnEl) {
+            selectedVariantPrice[productId] = { size, price };
+            document.querySelectorAll('.variant-btn').forEach(b => {
+                b.classList.remove('bg-pinky-600', 'text-white', 'border-pinky-600');
+                b.classList.add('bg-white', 'text-slate-700', 'border-pink-200');
+            });
+            btnEl.classList.remove('bg-white', 'text-slate-700', 'border-pink-200');
+            btnEl.classList.add('bg-pinky-600', 'text-white', 'border-pinky-600');
+            document.getElementById('modalPriceDisplay').textContent = formatPrice(price);
+        }
+
+        function addFromModal(productId) {
+            const product = products.find(p => p.id === productId);
+            if (product.hasVariants && selectedVariantPrice[productId]) {
+                addToCart(productId, selectedVariantPrice[productId].size, selectedVariantPrice[productId].price);
+            } else {
+                addToCart(productId);
+            }
+            closeModal();
         }
 
         function closeModal() {
@@ -552,6 +698,7 @@
         }
 
         // Render inicial
+        renderBrandFilters();
         renderProducts(products);
     </script>
 </body>
